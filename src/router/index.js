@@ -64,11 +64,18 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      name: "index",
-      component: lazyLoad("index/index"),
-      meta: {
-        title: "链调试功能demo"
-      }
+      redirect: "/home",
+      component: () => import(`@/layout/index.vue`),
+      children: [
+        {
+          path: "home",
+          name: "home",
+          component: lazyLoad("index/index"),
+          meta: {
+            title: "Wixroyd home"
+          }
+        }
+      ]
     },
     {
       path: "/test",
@@ -114,7 +121,8 @@ router.beforeEach((to, from, next) => {
 router.afterEach((to, from) => {
   console.warn("from ::: ", from);
   console.warn("to ::: ", to);
-  document.title = (to.meta.title ?? "").toString();
+  document.title =
+    (to.meta.title ?? "").toString() + " | " + import.meta.env.VITE_APP_TITLE;
 });
 
 export default router;

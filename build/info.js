@@ -3,10 +3,13 @@ import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
 import gradientString from "gradient-string";
 import boxen from "boxen";
-dayjs.extend(duration);
+import configJson from "../package.json";
 
+dayjs.extend(duration);
 const welcomeMessage = gradientString("cyan", "magenta").multiline(
-  `欢迎联系：630514215@qq.com，wixroyd_copy~`
+  `欢迎联系：${configJson.author.name}
+邮箱：${configJson.author.email}
+项目名称：${configJson.name}`
 );
 
 const boxenOptions = {
