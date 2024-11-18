@@ -2,7 +2,7 @@ import "@/assets/styles/main.css";
 import "@/assets/styles/tailwind.css";
 import { createApp } from "vue";
 import router, { cacheWhiteList } from "./router";
-import { pinia } from "@/stores";
+import { pinia } from "./stores/index";
 import App from "./App.vue";
 import { Lazyload } from "vant";
 const app = createApp(App);
