@@ -23,7 +23,7 @@ export function getPluginsList(VITE_CDN, VITE_COMPRESSION) {
       iconDirs: [path.resolve(process.cwd(), "src/assets/icons")],
       // 指定symbolId格式
       symbolId: "icon-[dir]-[name]",
-      inject: "body-first" | "body-last",
+      inject: "body-first",
       customDomId: "__svg__icons__dom__"
     }),
     vue(),
