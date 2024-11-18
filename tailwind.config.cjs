@@ -1,11 +1,12 @@
 module.exports = {
-  content: ["./src/**/*.{html,js,vue}", "./index.html"],
+  content: ["./index.html", "./src/**/*.{js,vue}"],
   plugins: [require("daisyui")],
-  theme: {
-    extend: {}
-  },
   daisyui: {
-    themes: ["light"] // false: only light + dark | true: all themes | array: specific themes like this ["light", "dark", "cupcake"]
+    themes: ["light"]
   },
-  darkMode: ["selector"]
+  theme: {
+    extend: {
+      "custom-chat-bg": "rgb(42, 55, 109)"
+    }
+  }
 };

@@ -117,7 +117,7 @@
     "commit-msg": "node scripts/verify-commit.js"
   },
   "lint-staged": {
-    "**/*.{js,jsx}": [
+    "./src/**/*.{js,jsx,vue}": [
       "eslint --cache --max-warnings 0 --fix"
     ],
     "**/*.{html,js,cjs,json,css,scss,md}": [

@@ -1,5 +1,5 @@
-import "@/assets/styles/tailwind.css";
 import "@/assets/styles/main.css";
+import "@/assets/styles/tailwind.css";
 import { createApp } from "vue";
 import router, { cacheWhiteList } from "./router";
 import { pinia } from "@/stores";
