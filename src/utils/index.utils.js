@@ -25,8 +25,25 @@ export const getAssetsImageUrl = pathName => {
       pngImages = import.meta.glob("@/assets/images/**/*.svg", {
         eager: true
       });
+      return pngImages[
+        "/src/assets/images" +
+          (pathName.indexOf("/") === 0 ? pathName : "/" + pathName)
+      ].render;
     }
-    return pngImages["/src/assets/images" + pathName].default;
+    console.log(
+      "pngImages[\n" +
+        '      "/src/assets/images" +\n' +
+        '        (pathName.indexOf("/") === 0 ? pathName : "/" + pathName)\n' +
+        "    ]",
+      pngImages[
+        "/src/assets/images" +
+          (pathName.indexOf("/") === 0 ? pathName : "/" + pathName)
+      ]
+    );
+    return pngImages[
+      "/src/assets/images" +
+        (pathName.indexOf("/") === 0 ? pathName : "/" + pathName)
+    ].default;
   } catch (error) {
     console.error("GetAssetsImageUrl Not Found " + pathName, error.toString());
     return "";

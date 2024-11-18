@@ -1,5 +1,6 @@
 import "@/assets/styles/main.css";
 import "@/assets/styles/tailwind.css";
+import "virtual:svg-icons-register";
 import { createApp } from "vue";
 import router, { cacheWhiteList } from "./router";
 import { pinia } from "./stores/index";

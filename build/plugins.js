@@ -12,9 +12,20 @@ import { VantResolver } from "@vant/auto-import-resolver";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import dynamicImport from "vite-plugin-dynamic-import";
 import { nodePolyfills } from "vite-plugin-node-polyfills";
+import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
+import path from "node:path";
+
 export function getPluginsList(VITE_CDN, VITE_COMPRESSION) {
   const lifecycle = process.env.npm_lifecycle_event;
   return [
+    createSvgIconsPlugin({
+      // 指定需要缓存的图标文件夹
+      iconDirs: [path.resolve(process.cwd(), "src/assets/icons")],
+      // 指定symbolId格式
+      symbolId: "icon-[dir]-[name]",
+      inject: "body-first" | "body-last",
+      customDomId: "__svg__icons__dom__"
+    }),
     vue(),
     nodePolyfills(),
     dynamicImport({
