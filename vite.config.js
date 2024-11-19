@@ -64,7 +64,7 @@ export default ({ mode }) => {
       chunkSizeWarningLimit: 4000,
       rollupOptions: {
         input: {
-          index: pathResolve("./index.html", import.meta.url)
+          index: pathResolve("./public/index.html", import.meta.url)
         },
         // 静态资源分类打包
         output: {
