@@ -30,9 +30,9 @@ function getHistoryMode(routerHistory) {
 }
 /*
  * timmy
- * desc: 路由懒加载
- * params  string
- * return component
+ * @description: 路由懒加载
+ * @params  string
+ * @return component
  * */
 function lazyLoad(componentName) {
   return defineAsyncComponent({
@@ -42,7 +42,7 @@ function lazyLoad(componentName) {
         // 返回一个空组件或者错误组件
         return {
           render() {
-            return h("div", "加载失败，请重试");
+            return h("div", "Loading Failed，please try again...");
           }
         };
       });
