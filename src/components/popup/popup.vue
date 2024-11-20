@@ -1,22 +1,24 @@
 <template>
-  <div
-    v-if="showPopup"
-    class="apex-popup"
-  >
+  <div v-if="showPopup" class="apex-popup">
     <div
-      :class="[ani, animation ? 'ani' : '', !custom ? 'apex-custom' : '', opacity ? 'opacity_none' : '']"
+      :class="[
+        ani,
+        animation ? 'ani' : '',
+        !custom ? 'apex-custom' : '',
+        opacity ? 'opacity_none' : ''
+      ]"
       class="apex-popup__mask"
-      :style="{'background-color':maskColor}"
+      :style="{ 'background-color': maskColor }"
       @click="close(true)"
       @touchmove.prevent
-    ></div>
+    />
     <div
       :class="[type, ani, animation ? 'ani' : '', !custom ? 'apex-custom' : '']"
       class="apex-popup__wrapper"
       @click="close(true)"
     >
       <div
-        :style="{ 'background-color': bgColor ,'border-radius': borderRadius}"
+        :style="{ 'background-color': bgColor, 'border-radius': borderRadius }"
         class="apex-popup__wrapper-box"
         :class="{
           padding_zero: isPadding,
@@ -26,15 +28,15 @@
         }"
         @click.stop="clear"
       >
-        <slot></slot>
+        <slot />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import {ref, watch, getCurrentInstance, onMounted, onUnmounted} from 'vue';
-const {proxy}=getCurrentInstance();
+import { ref, watch, getCurrentInstance, onMounted, onUnmounted } from "vue";
+const { proxy } = getCurrentInstance();
 const props = defineProps({
   isAutoWidth: {
     type: Boolean,
@@ -50,7 +52,7 @@ const props = defineProps({
   },
   zIndex: {
     type: String,
-    default: 'center'
+    default: "center"
   },
   isCoverAll: {
     type: Boolean,
@@ -62,15 +64,15 @@ const props = defineProps({
   },
   bgColor: {
     type: String,
-    default: 'rgba(255, 255, 255, 1)',
+    default: "rgba(255, 255, 255, 1)"
   },
   borderRadius: {
     type: String,
-    default: '10px',
+    default: "10px"
   },
   maskColor: {
     type: String,
-    default: 'rgba(0, 0, 0, .1)',
+    default: "rgba(0, 0, 0, .1)"
   },
   // 开启动画
   animation: {
@@ -80,7 +82,7 @@ const props = defineProps({
   // 弹出层类型，可选值，top: 顶部弹出层；bottom：底部弹出层；center：全屏弹出层
   type: {
     type: String,
-    default: 'center'
+    default: "center"
   },
   // 是否开启自定义
   custom: {
@@ -98,50 +100,49 @@ const props = defineProps({
   }
 });
 
-const ani = ref('');
+const ani = ref("");
 const showPopup = ref(false);
 
 watch(
-    () => props.show,
-    (newValue) => {
-      if (newValue) {
-        open();
-      } else {
-        close();
-      }
+  () => props.show,
+  newValue => {
+    if (newValue) {
+      open();
+    } else {
+      close();
     }
+  }
 );
 function clear() {}
 
 function open() {
-  emit('change', { show: true });
+  emit("change", { show: true });
   showPopup.value = true;
-  document.body.style.overflowY = 'hidden'
+  document.body.style.overflowY = "hidden";
   proxy.$nextTick(() => {
     setTimeout(() => {
-      ani.value = 'apex-' + props.type;
+      ani.value = "apex-" + props.type;
     }, 30);
   });
 }
 
 function close(type) {
   if (!props.maskClick && type) return;
-  emit('change', { show: false });
-  ani.value = '';
+  emit("change", { show: false });
+  ani.value = "";
   proxy.$nextTick(() => {
     setTimeout(() => {
       showPopup.value = false;
-      document.body.style.overflowY = 'auto'
+      document.body.style.overflowY = "auto";
     }, 300);
   });
 }
 
-const emit = defineEmits(['change']);
-onMounted(()=>{
-})
+const emit = defineEmits(["change"]);
+onMounted(() => {});
 onUnmounted(() => {
   // 恢复 body 滚动
-})
+});
 </script>
 <style scoped>
 .apex-popup {
