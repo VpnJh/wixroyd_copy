@@ -1,5 +1,5 @@
 module.exports = {
-  content: ["./public/index.html", "./src/**/*.{js,vue}"],
+  content: ["./index.html", "./src/**/*.{js,vue}"],
   plugins: [require("daisyui")],
   daisyui: {
     themes: ["light"]

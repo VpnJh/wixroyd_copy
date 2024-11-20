@@ -40,7 +40,7 @@ export default ({ mode }) => {
       },
       // 预热文件以提前转换和缓存结果，降低启动期间的初始页面加载时长并防止转换瀑布
       warmup: {
-        clientFiles: ["./public/index.html", "./src/{views,components}/*"]
+        clientFiles: ["./index.html", "./src/{views,components}/*"]
       }
     },
     plugins: getPluginsList(VITE_CDN, VITE_COMPRESSION),
@@ -64,7 +64,7 @@ export default ({ mode }) => {
       chunkSizeWarningLimit: 4000,
       rollupOptions: {
         input: {
-          index: pathResolve("./public/index.html", import.meta.url)
+          index: pathResolve("./index.html", import.meta.url)
         },
         // 静态资源分类打包
         output: {
