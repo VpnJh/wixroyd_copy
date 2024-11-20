@@ -5,6 +5,6 @@ export default {
   bracketSpacing: true,
   singleQuote: false,
   arrowParens: "avoid",
-  endOfLine: "auto",
+  endOfLine: "lf",
   trailingComma: "none"
 };
